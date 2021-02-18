@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:udemy/BottomNavigation.dart';
 import 'package:udemy/drawer/CustomDrawer.dart';
+import 'package:udemy/quiz/WelcomeScreen.dart';
 
 import 'CustomView.dart';
 import 'MyInputText.dart';
@@ -18,12 +19,25 @@ void main() {
   runApp(MyApp());
 }
 
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: MyHomePage(),
+//     );
+//   }
+// }
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      title: 'Quiz App',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+      home: WelcomeScreen(),
     );
   }
 }

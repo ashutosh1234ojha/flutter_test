@@ -32,6 +32,12 @@ dependencies:
   permission_handler: ^5.1.0+2
   http: ^0.12.2
   sliding_up_panel: ^1.0.2
+  websafe_svg: ^1.1.4
+  get: ^3.24.0
+
+
+
+
 
 
 
@@ -50,3 +56,5 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - assets/icons/
+
