@@ -104,7 +104,7 @@ class CustomCheckbox extends StatefulWidget {
       @required this.text,
       this.textDecoration,
       this.checkboxColor,
-      this.isChecked,
+      @required this.isChecked,
       this.checkTickColor});
 
   @override
