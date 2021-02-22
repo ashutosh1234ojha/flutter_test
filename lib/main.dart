@@ -13,6 +13,7 @@ import 'MyImage.dart';
 import 'PermissionUtil.dart';
 import 'BottomSlidingView.dart';
 import 'Async.dart';
+import 'AppCustomWidget.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  Widget createButton(BuildContext context, Color color, String string, StatefulWidget widget) {
+  Widget createButton(
+      BuildContext context, Color color, String string, StatefulWidget widget) {
     return Container(
       width: double.infinity,
       color: color,
@@ -52,19 +54,23 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         shadowColor: Colors.red,
       ),
-      body: Column(
+      body: ListView(
         children: [
-          createButton(context, Colors.yellow, 'Bottom navigation view',BottomNavigation()),
-          createButton(context, Colors.green, 'Input text',MyInputText()),
-          createButton(context, Colors.yellow, 'PageView',MyPageView()),
-          createButton(context, Colors.green, 'TabView',TabView()),
-          createButton(context, Colors.yellow, 'CustomDrawer',DrawerMain()),
-          createButton(context, Colors.green, 'View',CustomView()),
-          createButton(context, Colors.yellow, 'MyDialog',MyDialog()),
-          createButton(context, Colors.green, 'Image',MyImage()),
-          createButton(context, Colors.yellow, 'Permission',PermissionUtil()),
-          createButton(context, Colors.green, 'Async',Async()),
-          createButton(context, Colors.yellow, 'BottomSlidingView',BottomSlidingView()),
+          createButton(context, Colors.yellow, 'Bottom navigation view',
+              BottomNavigation()),
+          createButton(context, Colors.green, 'Input text', MyInputText()),
+          createButton(context, Colors.yellow, 'PageView', MyPageView()),
+          createButton(context, Colors.green, 'TabView', TabView()),
+          createButton(context, Colors.yellow, 'CustomDrawer', DrawerMain()),
+          createButton(context, Colors.green, 'View', CustomView()),
+          createButton(context, Colors.yellow, 'MyDialog', MyDialog()),
+          createButton(context, Colors.green, 'Image', MyImage()),
+          createButton(context, Colors.yellow, 'Permission', PermissionUtil()),
+          createButton(context, Colors.green, 'Async', Async()),
+          createButton(
+              context, Colors.yellow, 'BottomSlidingView', BottomSlidingView()),
+          createButton(
+              context, Colors.green, 'AppCustomWidget', AppCustomWidget()),
         ],
       ),
     );
