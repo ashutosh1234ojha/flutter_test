@@ -19,9 +19,7 @@ class _BlocHomeState extends State<BlocHome> {
   void initState() {
     super.initState();
     mBloc = BlocProvider.of<TodoBloc>(context);
- //   mBloc.add(LoadingEvent());
-    // mBloc.add(LoadingEvent());
-     mBloc.add(RequestTodoApiClient());
+    mBloc.add(RequestTodoApiClient());
   }
 
   @override
@@ -31,33 +29,49 @@ class _BlocHomeState extends State<BlocHome> {
         title: Text('I did it'),
       ),
       body: BlocConsumer<TodoBloc, TodoState>(
-          listener: (BuildContext context, state) {
-        if (state is ScreenLoading) {
-          mBloc.add(LoadingEvent());
-        } else if (state is LoadingEvent) {
-          mBloc.add(RequestTodoApiClient());
+          builder: (BuildContext context, state) {
+        if (state is TodoInitial) {
+          // return buildLoadingState();
+          return ShimmerWidget();
+        } else if (state is RequestApiLoading) {
+          // return buildLoadingState();
+          return ShimmerWidget();
+        } else if (state is TodoApiError) {
+          return Text("No Data Found..");
         } else if (state is TodoApiSuccess) {
-          coinModelList = state.coinModel;
+
+          return ListView.builder(
+              itemCount: coinModelList.length,
+              itemBuilder: (context, index) {
+                if (state is TodoApiSuccess) {
+                  if (state.coinModel.length == 0) {
+                    return Text("No Data Found..");
+                  } else {
+                    return Text(state.coinModel[index].title);
+                  }
+                } else {
+                  return Text("No Data Found..");
+                }
+              });
+        } else {
+          return Text("No Data Found..");
+        }
+
+      }, listener: (BuildContext context, state) {
+        if (state is RequestApiLoading) {
         } else if (state is TodoApiError) {
           final snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
           Scaffold.of(context).showSnackBar(snackBar);
+        } else if (state is TodoApiSuccess) {
+          coinModelList = state.coinModel;
         }
-      }, builder: (BuildContext context, state) {
-        return Container(
-            child: ListView.builder(
-                itemCount: coinModelList.length,
-                itemBuilder: (context, index) {
-                  if (state is ScreenLoading) return ShimmerWidget();
-                  if (state is LoadingEvent) return ShimmerWidget();
-                  if (state is RequestApiLoading) return ShimmerWidget();
-                  if (coinModelList.length == 0) return Text("No Data Found..");
-                  TodoModel localCoinModel = coinModelList[index];
-                  if (state is TodoApiError)
-                    return Text("No Data Found.."); //ShimmerWidget()
-                  else
-                    return Text(coinModelList[index].title);
-                }));
       }),
+    );
+  }
+
+  Widget buildLoadingState() {
+    return Center(
+      child: CircularProgressIndicator(),
     );
   }
 }

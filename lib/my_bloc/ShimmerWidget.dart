@@ -6,6 +6,7 @@ class ShimmerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 8.0),
+      height: double.infinity,
       child: SizedBox(
         width: 200.0,
         height: 100.0,

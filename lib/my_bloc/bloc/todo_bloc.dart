@@ -13,7 +13,7 @@ part 'todo_state.dart';
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   TodoApiImpl mRepo;
 
-  TodoBloc(TodoApiService repository) : super(ScreenLoading()) {
+  TodoBloc(TodoApiService repository) : super(TodoInitial()) {
     mRepo = repository;
   }
 
@@ -21,13 +21,12 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   Stream<TodoState> mapEventToState(
     TodoEvent event,
   ) async* {
-    if (event is LoadingEvent) {
-      yield ScreenLoading();
-    }else if (event is RequestTodoApiClient) {
-      yield RequestApiLoading();
-      List<TodoModel> coinModel =
-      await mRepo.getTodoList("1");
-      yield TodoApiSuccess(coinModel);
-
+    if (event is RequestTodoApiClient) {
+      yield (RequestApiLoading());
+      // }else if (event is RequestTodoApiClient) {
+      // yield RequestApiLoading();
+      List<TodoModel> coinModel = await mRepo.getTodoList("1");
+      yield (TodoApiSuccess(coinModel));
     }
-}}
+  }
+}
