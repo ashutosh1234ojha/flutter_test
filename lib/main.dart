@@ -5,6 +5,7 @@ import 'package:udemy/drawer/CustomDrawer.dart';
 import 'CustomView.dart';
 import 'MyInputText.dart';
 import 'PageView.dart';
+import 'my_bloc/MyBlocPatter.dart';
 import 'tab_view/TabView.dart';
 import 'CustomView.dart';
 import 'drawer/DrawerMain.dart';
@@ -71,6 +72,7 @@ class MyHomePage extends StatelessWidget {
               context, Colors.yellow, 'BottomSlidingView', BottomSlidingView()),
           createButton(
               context, Colors.green, 'AppCustomWidget', AppCustomWidget()),
+          createButton(context, Colors.yellow, 'Bloc', MyBlocPatter()),
         ],
       ),
     );

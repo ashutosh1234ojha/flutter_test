@@ -34,6 +34,7 @@ class _AppCustomWidgetState extends State<AppCustomWidget> {
             CustomTextWidget(
               text: 'Forget password',
               textColor: Colors.green,
+              isUnderlined: true,
             ),
             CustomCheckbox(
               text: 'Remember Me',
@@ -52,7 +53,8 @@ class CustomTextWidget extends StatelessWidget {
   String text;
   String fontFamily;
   bool isClickable = false;
-  bool isUnderlined = false;
+  final bool isUnderlined;
+
   Color textColor = Colors.black;
   double fontSize = 15;
   TextDecoration textDecoration;
@@ -66,7 +68,9 @@ class CustomTextWidget extends StatelessWidget {
     @required this.text,
     this.textDecoration,
   });
-
+  CustomTextWidget setTextColor(Color color){
+    this.textColor=color;
+  }
   @override
   Widget build(BuildContext context) {
     return InkWell(
