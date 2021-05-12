@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:udemy/BottomNavigation.dart';
 import 'package:udemy/drawer/CustomDrawer.dart';
+import 'package:udemy/hero/IntialHero.dart';
 
 import 'CustomView.dart';
 import 'MyInputText.dart';
@@ -73,6 +74,7 @@ class MyHomePage extends StatelessWidget {
           createButton(
               context, Colors.green, 'AppCustomWidget', AppCustomWidget()),
           createButton(context, Colors.yellow, 'Bloc', MyBlocPatter()),
+          createButton(context, Colors.green, 'Hero', InitialHero()),
         ],
       ),
     );
